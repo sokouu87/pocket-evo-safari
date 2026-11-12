@@ -38,6 +38,8 @@ Pocket Evo Safari 是 macOS Safari 扩展，为 PT 站点提供统一的接入�
 | GazelleGames | GazelleJSONAPI |
 | Great Poster Wall | GazelleJSONAPI |
 | HD-F | Gazelle |
+| HD-Space | XBTIT |
+| HD-Torrents | XBTIT |
 | HDArea | NexusPHP |
 | HDBits | PrivateSite |
 | HDChina | NexusPHP |
@@ -46,17 +48,26 @@ Pocket Evo Safari 是 macOS Safari 扩展，为 PT 站点提供统一的接入�
 | HDSky| NexusPHP |
 | HDTIME | NexusPHP |
 | HDU | NexusPHP |
-| HD-Space | XBTIT |
-| HD-Torrents | XBTIT |
 | HHanClub | NexusPHP |
 | IPTorrents | AbstractPrivateSite |
 | Keepfrds | NexusPHP |
 | M-Team | mTorrent |
 | NicePT | NexusPHP |
+| NYPT | NexusPHP |
+| OpenCD | NexusPHP |
 | OurBits | NexusPHP |
 | PassThePopcorn | Gazelle |
 | Piggo | Piggo |
-| TorrentLeech | AbstractPrivateSite |
+| PT | NexusPHP |
+| PTerClub | NexusPHP |
+| PTHOME | NexusPHP |
+| Redacted | GazelleJSONAPI |
+| Soulvoice | NexusPHP |
+| 不可说| NexusPHP |
+| SUNNYPT | SUNNYPT |
+| TCCF | SUNNYPT |
+| TJUPT | SUNNYPT |
+| TLFBits | SUNNYPT |
 | TTG | TBSource |
 | U2 | NexusPHP |
 | Ying | AbstractPrivateSite |
