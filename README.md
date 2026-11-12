@@ -43,12 +43,12 @@ Pocket Evo Safari 是 macOS Safari 扩展，为 PT 站点提供统一的接入�
 | HDChina | NexusPHP |
 | HDFans | NexusPHP |
 | HDHome | NexusPHP |
-| HDSky（天空） | NexusPHP |
+| HDSky| NexusPHP |
 | HDTIME | NexusPHP |
 | HDU | NexusPHP |
 | HD-Space | XBTIT |
 | HD-Torrents | XBTIT |
-| HHCULB（HHanClub） | NexusPHP |
+| HHanClub | NexusPHP |
 | IPTorrents | AbstractPrivateSite |
 | Keepfrds | NexusPHP |
 | M-Team | mTorrent |
@@ -61,8 +61,6 @@ Pocket Evo Safari 是 macOS Safari 扩展，为 PT 站点提供统一的接入�
 | U2 | NexusPHP |
 | Ying | AbstractPrivateSite |
 | ZhuQue | TNode |
-
-截图中 TorrentLeech 显示为不可用；站点可用状态会随账号和站点状态变化。
 
 ## 环境要求
 
