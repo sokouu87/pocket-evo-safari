@@ -1,0 +1,16 @@
+.DS_Store
+.DS_Store
+Build/
+DerivedData/
+**/xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+*.mobileprovision
+*.p12
+*.cer
+*.pem
+*.key
+.env
+.env.*
+pocket-evo-backup-*.json
