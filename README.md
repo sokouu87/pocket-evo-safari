@@ -17,61 +17,61 @@ Pocket Evo Safari 是 macOS Safari 扩展，为PT站点提供统一的接入、�
 
 ## 站点支持
 
-以下为 Pocket Evo 插件已适配的站点列表：
+当前清单共 **51 个站点**：
 
-| 站点名称 | 站点类型 |
-| --- | --- |
-| AlphaRatio | GazelleJSONAPI |
-| Anthelion | Gazelle |
-| AsianCinema | Unit3D |
-| Audiences | NexusPHP |
-| BeyondHD | F3NIX |
-| Blutopia | Unit3D |
-| BroadcastTheNet | Gazelle |
-| BrokenStones | GazelleJSONAPI |
-| CHDBits | NexusPHP |
-| DIC Music | GazelleJSONAPI |
-| DiscFan | NexusPHP |
-| Emp | Luminance |
-| ExoticaZ | AvistazNetwork |
-| FileList | FileList |
-| GazelleGames | GazelleJSONAPI |
-| Great Poster Wall | GazelleJSONAPI |
-| HD-F | Gazelle |
-| HD-Space | XBTIT |
-| HD-Torrents | XBTIT |
-| HDArea | NexusPHP |
-| HDBits | PrivateSite |
-| HDChina | NexusPHP |
-| HDFans | NexusPHP |
-| HDHome | NexusPHP |
-| HDSky| NexusPHP |
-| HDTIME | NexusPHP |
-| HDU | NexusPHP |
-| HHanClub | NexusPHP |
-| IPTorrents | AbstractPrivateSite |
-| Keepfrds | NexusPHP |
-| M-Team | mTorrent |
-| NicePT | NexusPHP |
-| NYPT | NexusPHP |
-| OpenCD | NexusPHP |
-| OurBits | NexusPHP |
-| PassThePopcorn | Gazelle |
-| Piggo | Piggo |
-| PT | NexusPHP |
-| PTerClub | NexusPHP |
-| PTHOME | NexusPHP |
-| Redacted | GazelleJSONAPI |
-| Soulvoice | NexusPHP |
-| 不可说| NexusPHP |
-| SUNNYPT | SUNNYPT |
-| TCCF | SUNNYPT |
-| TJUPT | SUNNYPT |
-| TLFBits | SUNNYPT |
-| TTG | TBSource |
-| U2 | NexusPHP |
-| Ying | AbstractPrivateSite |
-| ZhuQue | TNode |
+| 序号 | 站点名称 | 站点类型 |
+| ---: | --- | --- |
+| 1 | AlphaRatio | GazelleJSONAPI |
+| 2 | Anthelion | Gazelle |
+| 3 | AsianCinema | Unit3D |
+| 4 | Audiences | NexusPHP |
+| 5 | BeyondHD | F3NIX |
+| 6 | Blutopia | Unit3D |
+| 7 | BroadcastTheNet | Gazelle |
+| 8 | BrokenStones | GazelleJSONAPI |
+| 9 | CHDBits | NexusPHP |
+| 10 | DIC Music | GazelleJSONAPI |
+| 11 | DiscFan | NexusPHP |
+| 12 | Emp | Luminance |
+| 13 | ExoticaZ | AvistazNetwork |
+| 14 | FileList | FileList |
+| 15 | GazelleGames | GazelleJSONAPI |
+| 16 | Great Poster Wall | GazelleJSONAPI |
+| 17 | HD-F | Gazelle |
+| 18 | HD-Space | XBTIT |
+| 19 | HD-Torrents | XBTIT |
+| 20 | HDArea | NexusPHP |
+| 21 | HDBits | PrivateSite |
+| 22 | HDChina | NexusPHP |
+| 23 | HDFans | NexusPHP |
+| 24 | HDHome | NexusPHP |
+| 25 | HDSky | NexusPHP |
+| 26 | HDTIME | NexusPHP |
+| 27 | HDU | NexusPHP |
+| 28 | HHanClub | NexusPHP |
+| 29 | IPTorrents | AbstractPrivateSite |
+| 30 | Keepfrds | NexusPHP |
+| 31 | M-Team | mTorrent |
+| 32 | NicePT | NexusPHP |
+| 33 | NYPT | NexusPHP |
+| 34 | OpenCD | NexusPHP |
+| 35 | OurBits | NexusPHP |
+| 36 | PassThePopcorn | Gazelle |
+| 37 | Piggo | Piggo |
+| 38 | PT | NexusPHP |
+| 39 | PTerClub | NexusPHP |
+| 40 | PTHOME | NexusPHP |
+| 41 | Redacted | GazelleJSONAPI |
+| 42 | Soulvoice | NexusPHP |
+| 43 | 不可说 | NexusPHP |
+| 44 | SUNNYPT | SUNNYPT |
+| 45 | TCCF | SUNNYPT |
+| 46 | TJUPT | SUNNYPT |
+| 47 | TLFBits | SUNNYPT |
+| 48 | TTG | TBSource |
+| 49 | U2 | NexusPHP |
+| 50 | Ying | AbstractPrivateSite |
+| 51 | ZhuQue | TNode |
 
 ## 环境要求
 
