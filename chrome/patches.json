@@ -69,5 +69,13 @@
       "before": ".then(e=>{if(!e.type.startsWith(`image/`)||e.size>5e6)throw Error(`无效图片响应`);let t=new FileReader;t.onload=()=>r({ok:!0,dataUrl:String(t.result||``)}),t.onerror=()=>r({ok:!1,error:`海报读取失败`}),t.readAsDataURL(e)})",
       "after": ".then(async e=>{if(!e.type.startsWith(`image/`)||e.size>5e6)throw Error(`无效图片响应`);r({ok:!0,dataUrl:await blobDataUrl(e)})})"
     }
+  ],
+  "assets/window-oX-m_iX9.css": [
+    {
+      "name": "theme-banner-contrast",
+      "reason": "亮色主题的正文 token 被叠在固定深色背景上，真实 Chrome 测得 1.178:1。背景改用现有 surface-raised 主题 token，使 banner 和 notice 与正文颜色在各主题中配套。",
+      "before": ".banner,.notice{border:1px solid var(--border);color:var(--text);background:#252d3e;border-radius:3px}",
+      "after": ".banner,.notice{border:1px solid var(--border);color:var(--text);background:var(--surface-raised);border-radius:3px}"
+    }
   ]
 }
