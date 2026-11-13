@@ -118,7 +118,7 @@ Pocket Evo Safari 是 macOS Safari 扩展，为 PT 站点提供统一的接入�
 
 本项目基于以下开源项目开发，感谢原作者与贡献者：
 
-- [Kxmrg/pocket-evo-extension](https://github.com/Kxmrg/pocket-evo-extension)：Pocket Evo 浏览器扩展。本 Safari 项目以该项目 **v1.6.72** 作为开发起点，随后独立适配和迭代。
+- [Kxmrg/pocket-evo-extension](https://github.com/Kxmrg/pocket-evo-extension)：Pocket Evo 浏览器扩展。本 Safari 项目以该项目 **v1.5** 作为开发起点，随后独立适配和迭代。
 - [pt-plugins/PT-depiler](https://github.com/pt-plugins/PT-depiler)：感谢其 PT 站点适配与分类数据，为本项目提供参考。
 
 第三方项目的许可信息见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
