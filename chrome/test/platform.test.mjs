@@ -376,3 +376,24 @@ test('实际打包下载函数保留 Cookie 参数、可信跳转、次数和 be
   }
   assert.throws(() => validateTorrent(new Uint8Array(20000001)), /有效种子/);
 });
+
+test('提示条沿用亮暗主题 token，普通正文对比度至少 4.5', async () => {
+  const css = await readFile(new URL('../dist/assets/window-oX-m_iX9.css', import.meta.url), 'utf8');
+  assert.equal(css.includes('.banner,.notice{border:1px solid var(--border);color:var(--text);background:var(--surface-raised);border-radius:3px}'), true);
+  const luminance = (value) => {
+    assert.match(value, /^#[a-f0-9]{6}$/i);
+    const channels = value.slice(1).match(/../g).map((channel) => parseInt(channel, 16) / 255);
+    return channels.map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
+      .reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
+  };
+  for (const selector of [':root,:root[data-theme=dark]', ':root[data-theme=light]']) {
+    const start = css.lastIndexOf(`${selector}{`);
+    assert.ok(start >= 0);
+    const rule = css.slice(start, css.indexOf('}', start));
+    const tokens = Object.fromEntries([...rule.matchAll(/(--[a-z-]+):([^;{}]+)/g)].map((match) => [match[1], match[2]]));
+    const foreground = luminance(tokens['--text']);
+    const background = luminance(tokens['--surface-raised']);
+    const ratio = (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+    assert.ok(ratio >= 4.5, `${selector} 的正文对比度为 ${ratio}`);
+  }
+});
