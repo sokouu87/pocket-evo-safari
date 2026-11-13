@@ -1,0 +1,73 @@
+{
+  "assets/window-C_9OXhTS.js": [
+    {
+      "name": "chrome-platform-import",
+      "before": "import{_ as e,a as t,c as n,d as r,f as i,g as a,i as o,l as s,m as c,n as l,o as u,p as d,r as f,s as p,t as m,u as h,v as g}from\"./payload-CvrRzY4G.js\";",
+      "after": "import { chromeFetch, chromeTorrentFetch, chromeNetworkDiagnostic, chromeQbitLogin, chromeQbitAddResult } from \"../chrome/request.js\";import{_ as e,a as t,c as n,d as r,f as i,g as a,i as o,l as s,m as c,n as l,o as u,p as d,r as f,s as p,t as m,u as h,v as g}from\"./payload-CvrRzY4G.js\";"
+    },
+    {
+      "name": "site-request-adapter",
+      "before": "var yl=async(e,t)=>{let n=await fetch(e,t),",
+      "after": "var yl=async(e,t)=>{let n=await chromeFetch(e,t),"
+    },
+    {
+      "name": "torrent-request-adapter",
+      "before": "else{let e=await fetch(l.href,{credentials:a||o||s?`omit`:`include`,redirect:a||o||s?`manual`:`error`,signal:AbortSignal.timeout(Math.ceil(i*1e3))});if(e.status>=300&&e.status<400&&(c=e.headers.get(`Location`)),!c){if(e.type===`opaqueredirect`)throw Error(`浏览器隐藏了下载跳转地址，请使用 Safari 原生下载通道或打开站点详情页下载`);if(!e.ok)throw Error(`抓取种子失败（HTTP ${e.status}）`);let t=new Uint8Array(await e.arrayBuffer());ai(t);let n=``;for(let e of t)n+=String.fromCharCode(e);u=btoa(n)}}",
+      "after": "else{let chromeResponse=await chromeTorrentFetch(l.href,{credentials:a||o||s?`omit`:`include`,redirect:`manual`,signal:AbortSignal.timeout(Math.ceil(i*1e3))},e,t.link,a||o||s,Math.ceil(i*1e3));if(chromeResponse.status>=300&&chromeResponse.status<400&&(c=chromeResponse.headers.get(`Location`)),!c){if(chromeResponse.type===`opaqueredirect`)throw Error(`浏览器隐藏了下载跳转地址，请使用 Safari 原生下载通道或打开站点详情页下载`);if(!chromeResponse.ok)throw Error(`抓取种子失败（HTTP ${chromeResponse.status}）`);let t=new Uint8Array(await chromeResponse.arrayBuffer());ai(t);let n=``;for(let e of t)n+=String.fromCharCode(e);u=btoa(n)}}"
+    },
+    {
+      "name": "chrome-diagnostic",
+      "before": "async function ul(e){let t={supported:il(),echoOk:!1,echoMs:null,fetchOk:!1,fetchMs:null,fetchStatus:null,fetchBytes:null,error:null};if(!t.supported)return t.error=`当前浏览器不支持 nativeMessaging（需 Safari 宿主 app 或 Chrome）`,t;try{let e=Date.now(),n=await al({action:`echo`,payload:`ping`});if(t.echoMs=Date.now()-e,t.echoOk=!!n&&typeof n==`object`&&`echo`in n,!t.echoOk)return t.error=t.error??`appex 未返回预期的回显`,t}catch(e){return t.error=e instanceof Error?e.message:String(e),t}try{let n=Date.now(),r=await ol(e.url,e.headers??{});t.fetchMs=Date.now()-n,t.fetchOk=r.ok,t.fetchStatus=r.status,t.fetchBytes=r.text?.length??0,r.ok||(t.error=r.error??`HTTP ${r.status}`)}catch(e){t.error=e instanceof Error?e.message:String(e)}return t}",
+      "after": "async function ul(e){return chromeNetworkDiagnostic(e)}"
+    },
+    {
+      "name": "chrome-diagnostic-ui",
+      "before": "function Ep(e){let t=e.nativeTest,n=(e,t,n)=>`<div class=\"native-row\">\r\n    <span class=\"native-label\">${e}</span>\r\n    <span class=\"native-value${n===null?``:n?` ok`:` fail`}\">${t}</span>\r\n  </div>`,r=t?`<div class=\"native-result\">\r\n        ${n(`nativeMessaging 支持`,t.supported?`是`:`否`,t.supported)}\r\n        ${n(`IPC 回显`,t.echoOk?`连通 · ${t.echoMs??`-`} ms`:`失败`,t.echoOk)}\r\n        ${n(`appex 代发请求`,t.fetchOk?`HTTP ${t.fetchStatus??`-`} · ${t.fetchMs??`-`} ms`:`失败`,t.fetchOk)}\r\n        ${n(`返回字节`,t.fetchBytes==null?`-`:`${t.fetchBytes.toLocaleString()} 字节`,null)}\r\n        ${t.error?`<p class=\"native-error\">${K(t.error)}</p>`:``}\r\n      </div>`:`<p class=\"empty-hint\">尚未自检。填一个探测地址后点「开始自检」——先测 IPC 是否打通，再测 appex 能否出网。</p>`;return`<div class=\"subpanel\">\r\n    <div class=\"notice\">${q(`plug`)}<div><strong>Native Messaging 自检</strong><p>Safari 扩展页的 fetch 既不携带浏览器 Cookie，手动设置的 <code>Cookie</code> 头也会被当 forbidden header 剥掉。这里改由宿主 app 的 appex 代发请求（原生 URLSession 不受这两层限制）。</p></div></div>\r\n    <label class=\"field wide\"><span>探测地址</span><input type=\"text\" data-native-url spellcheck=\"false\" placeholder=\"https://pt.example.com/\" value=\"${K(e.nativeProbeUrl)}\"></label>\r\n    <label class=\"field wide\"><span>Cookie（可选，原样带入请求头）</span><textarea data-native-cookie rows=\"2\" spellcheck=\"false\" placeholder=\"c_secure_uid=1; c_secure_pass=...\">${K(e.nativeProbeCookie)}</textarea></label>\r\n    <div class=\"native-actions\">\r\n      <button type=\"button\" class=\"primary\" data-action=\"native-test\" ${e.nativeTestBusy?`disabled`:``}>${e.nativeTestBusy?`自检中…`:`开始自检`}</button>\r\n      ${t?.fetchOk?`<span class=\"native-pass\">appex 出网正常</span>`:``}\r\n    </div>\r\n    ${r}\r\n  </div>`}",
+      "after": "function Ep(e){let t=e.nativeTest,n=(e,t,n)=>`<div class=\"native-row\">\r\n    <span class=\"native-label\">${e}</span>\r\n    <span class=\"native-value${n===null?``:n?` ok`:` fail`}\">${t}</span>\r\n  </div>`,r=t?`<div class=\"native-result\">\r\n        ${n(`Chrome 请求通道`,t.supported?`是`:`否`,t.supported)}\r\n        ${n(`Worker 连通`,t.echoOk?`连通 · ${t.echoMs??`-`} ms`:`失败`,t.echoOk)}\r\n        ${n(`站点请求`,t.fetchOk?`HTTP ${t.fetchStatus??`-`} · ${t.fetchMs??`-`} ms`:`失败`,t.fetchOk)}\r\n        ${n(`返回字节`,t.fetchBytes==null?`-`:`${t.fetchBytes.toLocaleString()} 字节`,null)}\r\n        ${t.error?`<p class=\"native-error\">${K(t.error)}</p>`:``}\r\n      </div>`:`<p class=\"empty-hint\">填写探测地址后运行自检，检查后台连接和站点响应。</p>`;return`<div class=\"subpanel\">\r\n    <div class=\"notice\">${q(`plug`)}<div><strong>Chrome 请求诊断</strong><p>验证后台 Worker 与站点连接。保存的 Cookie 和请求头通过限定目标 URL 的临时规则发送。</p></div></div>\r\n    <label class=\"field wide\"><span>探测地址</span><input type=\"text\" data-native-url spellcheck=\"false\" placeholder=\"https://pt.example.com/\" value=\"${K(e.nativeProbeUrl)}\"></label>\r\n    <label class=\"field wide\"><span>Cookie（可选，原样带入请求头）</span><textarea data-native-cookie rows=\"2\" spellcheck=\"false\" placeholder=\"c_secure_uid=1; c_secure_pass=...\">${K(e.nativeProbeCookie)}</textarea></label>\r\n    <div class=\"native-actions\">\r\n      <button type=\"button\" class=\"primary\" data-action=\"native-test\" ${e.nativeTestBusy?`disabled`:``}>${e.nativeTestBusy?`自检中…`:`开始自检`}</button>\r\n      ${t?.fetchOk?`<span class=\"native-pass\">Chrome 请求正常</span>`:``}\r\n    </div>\r\n    ${r}\r\n  </div>`}"
+    },
+    {
+      "name": "qbit-push-login-204",
+      "before": "if(i.text.trim()!==`Ok.`)return{serverId:e.id,ok:!1,message:`登录失败（${i.status}）`};",
+      "after": "if(!await chromeQbitLogin(i,n,r))return{serverId:e.id,ok:!1,message:`登录失败（${i.status}）`};"
+    },
+    {
+      "name": "qbit-probe-login-204",
+      "before": "if((await t(`${n}/api/v2/auth/login`,{method:`POST`,credentials:`include`,headers:{\"Content-Type\":`application/x-www-form-urlencoded`},body:new URLSearchParams({username:e.username??``,password:e.password??``}).toString()})).text.trim()!==`Ok.`)return{ok:!1,message:`登录失败`};",
+      "after": "if(!await chromeQbitLogin(await t(`${n}/api/v2/auth/login`,{method:`POST`,credentials:`include`,headers:{\"Content-Type\":`application/x-www-form-urlencoded`},body:new URLSearchParams({username:e.username??``,password:e.password??``}).toString()}),t,n))return{ok:!1,message:`登录失败`};"
+    },
+    {
+      "name": "chrome-diagnostic-tab",
+      "before": "{id:`native`,label:`Native 自检`,icon:`plug`}",
+      "after": "{id:`native`,label:`网络自检`,icon:`plug`}"
+    },
+    {
+      "name": "downloader-empty-page-guidance",
+      "before": "if(Y.downloader.tabHost=e.host,!e.tabId||!e.url)Y.downloader.links=[],Y.downloader.message=`无法访问当前标签页`;",
+      "after": "if(Y.downloader.tabHost=e.host,!e.tabId||!e.url)Y.downloader.links=[],Y.downloader.message=`打开站点详情页后可检测下载链接`;"
+    },
+    {
+      "name": "mteam-verified-download-cdn",
+      "reason": "2026-11-13 用户授权的真实 Chrome 验收观察到 api.m-team.cc 已认证种子下载返回 HTTP 302，目标为 HTTPS bt1.manfuz.co，端口为空。仅新增该完整主机，保持 MT credentials omit 与登录凭据隔离。记录不含签名 URL 或访问令牌。",
+      "before": "function El(e,t){return e.protocol===`https:`&&!e.username&&!e.password&&!e.port&&(e.origin===Sn(t)||e.hostname===`halomt.com`||e.hostname.endsWith(`.halomt.com`))}",
+      "after": "function El(e,t){return e.protocol===`https:`&&!e.username&&!e.password&&!e.port&&(e.origin===Sn(t)||e.hostname===`halomt.com`||e.hostname.endsWith(`.halomt.com`)||e.hostname===`bt1.manfuz.co`)}"
+    },
+    {
+      "name": "qbit-structured-add-result",
+      "reason": "真实 qBittorrent v5.2.4 / WebAPI 2.15.1 添加成功返回 HTTP 200 和四字段 JSON。官方 WebAPI 2.14.0 变更记录确认该结构、pending 使用 202、全部失败使用 409。https://github.com/qbittorrent/qBittorrent/blob/master/WebAPI_Changelog.md",
+      "before": ",l=c.text.trim();return l===`Ok.`?{serverId:e.id,ok:!0,message:`已推送`}:l===`Fails.`?{serverId:e.id,ok:!1,message:`下载器拒绝（可能已存在）`}:{serverId:e.id,ok:!1,message:l||`HTTP ${c.status}`}",
+      "after": ";return{serverId:e.id,...chromeQbitAddResult(c)}"
+    }
+  ],
+  "assets/background.js": [
+    {
+      "name": "worker-binary-import",
+      "before": "var e=[`www.rottentomatoes.com`,`www.metacritic.com`,`letterboxd.com`];",
+      "after": "import { blobDataUrl } from \"../chrome/binary.js\";var e=[`www.rottentomatoes.com`,`www.metacritic.com`,`letterboxd.com`];"
+    },
+    {
+      "name": "worker-poster-conversion",
+      "before": ".then(e=>{if(!e.type.startsWith(`image/`)||e.size>5e6)throw Error(`无效图片响应`);let t=new FileReader;t.onload=()=>r({ok:!0,dataUrl:String(t.result||``)}),t.onerror=()=>r({ok:!1,error:`海报读取失败`}),t.readAsDataURL(e)})",
+      "after": ".then(async e=>{if(!e.type.startsWith(`image/`)||e.size>5e6)throw Error(`无效图片响应`);r({ok:!0,dataUrl:await blobDataUrl(e)})})"
+    }
+  ]
+}

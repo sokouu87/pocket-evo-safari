@@ -123,4 +123,23 @@ Pocket Evo Safari 是 macOS Safari 扩展，为PT站点提供统一的接入、�
 
 第三方项目的许可信息见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
+## Chrome 本地加载
+
+安装 Node.js 22 或更新版本后，在仓库目录运行以下命令。
+
+```sh
+node chrome/build.mjs
+node --test chrome/test/*.test.mjs
+```
+
+打开 Chrome 的 `chrome://extensions`，开启开发者模式，选择“加载已解压的扩展程序”，选择本仓库的 `chrome/dist` 目录。点击扩展按钮打开弹窗，再进入站点管理窗口。历史记录和书签权限在使用浏览器一键导入时申请。
+
+Chrome 版本复用仓库中固定提交的 Safari 网页资源，保留站点、管理、统计、搜索、下载器、备份与二维码界面。`chrome/vendor-lock.json` 记录源提交与逐文件 SHA-256。`chrome/patches.json` 记录精确补丁，资源变化会使构建失败。可维护的平台代码位于 `chrome/src`。构建和测试使用 Node.js 内置模块，无需安装 npm 依赖。
+
+Chrome 请求通道使用限定扩展后台、请求方法和完整 URL 的临时规则发送保存的 Cookie、Referer、Origin 和 User-Agent。规则在请求结束后清理，后台重新启动时清理遗留规则。站点配置中的 Cookie 不会主动写入浏览器 Cookie 数据库。下载器登录沿用其正常的浏览器会话机制，qBittorrent 同时支持 `Ok.` 和经版本接口核对的 HTTP 204 空体响应。
+
+种子跳转仍受原站点可信域名、跳转次数、体积与文件结构校验限制。Chrome 通道通过只读网络事件观察跳转响应头。普通站点请求的跨来源跳转会提示更新站点地址，过长而无法建立精确匹配规则的 URL 会报错。网站人机验证、失效凭据和证书错误仍需在浏览器中处理。Chrome 设置中的请求诊断可验证后台和站点连接。
+
+Chrome 扩展本地存储和导出的备份含登录凭据。`chrome/dist` 为生成目录，不应放入个人配置或备份文件。
+
 

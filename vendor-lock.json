@@ -1,0 +1,47 @@
+{
+  "sourceCommit": "7b1bee1684aac4b2cc8fb8808554192435e16971",
+  "resourcePath": "Pocket Evo 站点导入/Pocket Evo 站点导入 Extension/Resources",
+  "files": {
+    "assets/background.js": "389bbd80794246acb120918d4d5f65ac0e5e37545a86bf5cb01310bde623b20b",
+    "assets/content.js": "2e7f00e066f257d12d8593b7a30642d1c44c4e7efca151f14c390cd2c58a3458",
+    "assets/fullscreen-jI9ZCdNO.css": "0fe0c31b2ed60b59f8d50e80c9e48109d79beb30cad8509a2f03c50ed720dcd3",
+    "assets/fullscreen-l14XnFgv.js": "13f21c53332752a95dc24e5220917a7a644171740d34aa975c10c7b2f3a5eec4",
+    "assets/payload-CvrRzY4G.js": "0b20a80c62360be6dea07824e9f558fc2f0536de4828aa99fc91facb7f6e1e8d",
+    "assets/popup-Bd1p1nv3.js": "91d03b711e3f88cc97017587b3c04dfaf99d2e9b0f597bc23677b1b0441c4256",
+    "assets/popup-CjYBICsm.css": "315ef472a10bad84e57c189deaefdd07fb50d6277a74d57c62a22fddd27d5ddd",
+    "assets/site-store-nZa0BTD2.js": "7742b8f6fd5a2b4234880561141038f7e4f4e4548f7884f805a7bb68a0ab225a",
+    "assets/size-CgFSePHW.js": "b4840e622c81cdef75ea4e854748ae7ce98e9460dda32c7116a5100d10f1d2b1",
+    "assets/visit.js": "3767f76e7dee0e29e1cbbbe9f183ec7702cf09bf10b9edc9a53fe7c625bc1a4a",
+    "assets/window-C_9OXhTS.js": "04dc6c4a76539525fdbf6306693a99325d14ad09e923f8f10125797a3f107c76",
+    "assets/window-oX-m_iX9.css": "0feea168ad332ec36c99f7488541313140746c8f8a1d1f754c837b2a3e89e5de",
+    "fullscreen.html": "c8b15a8f9a2a71947f6834932e47fda1e052e1f593a3d4a8021fd5b97e9e05ff",
+    "icons/icon-128.png": "673fbb0572e2d51a389e60433c26da261907723cc0ed676f98d3043ced618e2a",
+    "icons/icon-16.png": "90e033114285e9920fde79e61e61d702296fb2ef0a072140b5b169db25e6ab2d",
+    "icons/icon-32.png": "1088e37b3cceedc0aafee06a7aad29f7c49d4ae1287b2f4d2051a16bca0d6ecb",
+    "icons/icon-48.png": "e7729a8338fabc46eed71c42f0e922ae09abfcf3e2975ab0644854e94fd62ee0",
+    "icons/icon.svg": "dab72aff62cddd636e358436cb425f16c4f03a59ddb1d76a9ab8d7b4b232e18d",
+    "manifest.json": "c9f06051e9420ca457ef222542d7f01e9c2f62494165eb183ab8f2e4a70b590e",
+    "manifest.safari.json": "c9f06051e9420ca457ef222542d7f01e9c2f62494165eb183ab8f2e4a70b590e",
+    "popup.html": "7cb7d41a3225cbea028484d81c3b4faf30446fac1a09b17a98b8639e8cfca805",
+    "window.html": "8eb55abd92a26de36960f3ec39b3f6fc42b817f15877c2012ebd76cde45b2d98"
+  },
+  "notice": {
+    "sourcePath": "THIRD_PARTY_NOTICES.md",
+    "sha256": "ccb93d4849a5dc3c8d2047ea79a7b7cffba14aa5c56bc9dce6be186a39308f6d"
+  },
+  "normalization": {
+    "encoding": "UTF-8",
+    "lineEndings": "LF",
+    "extensions": [
+      ".js",
+      ".mjs",
+      ".css",
+      ".html",
+      ".json",
+      ".svg",
+      ".md"
+    ],
+    "binary": "unchanged",
+    "policy": "Text CRLF and CR are normalized to LF before hashing and writing. Hashes derive from sourceCommit Git blobs. Patch anchors and replacements use the same normalization. Binary assets retain their original bytes."
+  }
+}
